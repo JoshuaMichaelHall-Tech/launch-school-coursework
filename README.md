@@ -84,5 +84,14 @@ This repository contains my formal Launch School coursework. I maintain several 
 ## Usage
 This repository is primarily for personal reference and to showcase my progress through the Launch School curriculum. Feel free to explore, but please note that the code is my own work for educational purposes.
 
+## Acknowledgements
+
+This project was developed with assistance from Anthropic's Claude AI assistant, which helped with:
+- Documentation writing and organization
+- Code structure suggestions
+- Troubleshooting and debugging assistance
+
+Claude was used as a development aid while all final implementation decisions and code review were performed by the human developer.
+
 ## License
 This repository contains my personal work for Launch School assignments. Please do not copy or use this code for your own Launch School assignments. The code is shared for portfolio and learning purposes only.
