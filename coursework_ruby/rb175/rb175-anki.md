@@ -1,0 +1,467 @@
+## What are the basic requirements for a Ruby web application?
+A Ruby web application requires:
+1. A web server to receive HTTP requests
+2. Application code that processes those requests
+3. A way to generate HTTP responses
+4. A protocol (like HTTP) to communicate with clients
+
+## How do you create a simple TCP server in Ruby?
+```ruby
+require 'socket'
+
+server = TCPServer.new('localhost', 3000)
+
+loop do
+  client = server.accept
+  request_line = client.gets
+  puts request_line
+  
+  client.puts "HTTP/1.1 200 OK"
+  client.puts "Content-Type: text/plain\r\n\r\n"
+  client.puts "Hello World!"
+  client.close
+end
+```
+
+## How do you parse HTTP requests in Ruby?
+```ruby
+def parse_request(request_line)
+  http_method, path_and_params, http = request_line.split(" ")
+  path, params = path_and_params.split("?")
+
+  params = (params || "").split("&").each_with_object({}) do |pair, hash|
+    key, value = pair.split("=")
+    hash[key] = value
+  end
+
+  [http_method, path, params]
+end
+```
+
+## What is Rack and how does it simplify web application development?
+Rack is a middleware interface between web servers and Ruby web applications. It standardizes the way servers and applications interact by specifying that:
+1. An application is an object that responds to `call`
+2. It takes a single hash parameter (the environment)
+3. It returns an array with three elements: status code, headers hash, and response body
+
+This simplifies development by providing a consistent interface regardless of the server being used.
+
+## How do you create a basic Rack application?
+```ruby
+# config.ru
+require_relative 'app'
+run App.new
+
+# app.rb
+class App
+  def call(env)
+    [200, {"Content-Type" => "text/html"}, ["Hello World"]]
+  end
+end
+```
+
+## What is Sinatra and how does it build on Rack?
+Sinatra is a lightweight web framework built on top of Rack. It provides a DSL (Domain Specific Language) for defining routes and handling HTTP requests with minimal setup. Sinatra handles the Rack interface under the hood, letting developers focus on routes and responses rather than setup details.
+
+## How do you create a basic Sinatra application?
+```ruby
+require "sinatra"
+
+get "/" do
+  "Hello, World!"
+end
+
+get "/about" do
+  "This is a simple Sinatra application."
+end
+```
+
+## What are routes in Sinatra?
+Routes in Sinatra are HTTP method and URL pattern combinations that determine how your application should respond to specific requests. They are defined using methods named after HTTP methods (get, post, put, delete) followed by a URL pattern and a block that provides the response.
+
+## How do you handle different HTTP methods in Sinatra?
+```ruby
+# GET request
+get "/resources" do
+  # code to list resources
+end
+
+# POST request
+post "/resources" do
+  # code to create a new resource
+end
+
+# PUT request
+put "/resources/:id" do
+  # code to update a specific resource
+end
+
+# DELETE request
+delete "/resources/:id" do
+  # code to delete a specific resource
+end
+```
+
+## How do you access request parameters in Sinatra?
+```ruby
+# URL parameters
+get "/users/:name" do
+  "Hello, #{params[:name]}!"
+end
+
+# Query string parameters
+get "/search" do
+  "You searched for: #{params[:query]}"
+end
+
+# Form parameters
+post "/login" do
+  "Hello, #{params[:username]}!"
+end
+```
+
+## What are view templates and how do you use them in Sinatra?
+View templates are files containing HTML markup with embedded Ruby code that can be rendered by Sinatra. They separate presentation logic from application logic.
+
+```ruby
+# app.rb
+get "/hello" do
+  @name = "World"
+  erb :hello
+end
+
+# views/hello.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+  </head>
+  <body>
+    <h1>Hello, <%= @name %>!</h1>
+  </body>
+</html>
+```
+
+## How do you handle sessions in Sinatra?
+```ruby
+configure do
+  enable :sessions
+  set :session_secret, "secret"
+end
+
+get "/login" do
+  session[:username] = params[:username]
+  redirect "/"
+end
+
+get "/" do
+  "Hello, #{session[:username] || 'Guest'}"
+end
+
+get "/logout" do
+  session.clear
+  redirect "/"
+end
+```
+
+## What are layout templates in Sinatra?
+Layout templates are view templates that wrap around other view templates, providing common elements like headers, footers, and navigation. In Sinatra, the default layout is named `layout.erb` and includes the rendered view where the `yield` keyword appears.
+
+```ruby
+# views/layout.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Application</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Application</h1>
+      <nav>
+        <!-- Navigation links -->
+      </nav>
+    </header>
+    
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 My Application</p>
+    </footer>
+  </body>
+</html>
+```
+
+## How do you serve static files in Sinatra?
+Sinatra serves static files from the `public` directory. Any files placed in that directory are served directly without routing through the application.
+
+```ruby
+# Accessing a CSS file at public/stylesheets/style.css
+# In your HTML:
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+# Accessing an image at public/images/logo.png
+# In your HTML:
+<img src="/images/logo.png" alt="Logo">
+```
+
+## How do you redirect in Sinatra?
+```ruby
+get "/old-path" do
+  redirect "/new-path"
+end
+
+get "/login" do
+  # Process login
+  redirect "/"
+end
+
+get "/restricted" do
+  redirect "/login" unless session[:user_id]
+  # Restricted content
+end
+```
+
+## How do you handle form submissions in Sinatra?
+```ruby
+# Display the form
+get "/new" do
+  erb :new
+end
+
+# Process the form submission
+post "/create" do
+  # Access form data using params
+  @name = params[:name]
+  @email = params[:email]
+  
+  # Perform actions with the data
+  # Save to database, file, etc.
+  
+  # Redirect or render a response
+  erb :show
+end
+```
+
+## How do you implement user authentication in Sinatra?
+```ruby
+# In app.rb
+helpers do
+  def authenticate
+    @user = User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+  
+  def authenticated?
+    !@user.nil?
+  end
+  
+  def require_authentication
+    redirect "/login" unless authenticated?
+  end
+end
+
+get "/login" do
+  erb :login
+end
+
+post "/login" do
+  user = User.authenticate(params[:username], params[:password])
+  if user
+    session[:user_id] = user.id
+    redirect "/"
+  else
+    @error = "Invalid credentials"
+    erb :login
+  end
+end
+
+get "/protected" do
+  require_authentication
+  erb :protected
+end
+```
+
+## What are helpers in Sinatra and how do you use them?
+Helpers in Sinatra are methods that can be used across routes and templates to extract common functionality and keep code DRY.
+
+```ruby
+helpers do
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  
+  def logged_in?
+    !current_user.nil?
+  end
+  
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
+# In a route
+get "/" do
+  redirect "/login" unless logged_in?
+  # ...
+end
+
+# In a template
+<% if logged_in? %>
+  <p>Welcome, <%= h(current_user.name) %>!</p>
+<% else %>
+  <p>Please log in</p>
+<% end %>
+```
+
+## How do you handle file uploads in Sinatra?
+```ruby
+# In the form (views/upload.erb)
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <input type="submit" value="Upload">
+</form>
+
+# In the route
+post "/upload" do
+  if params[:file]
+    filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+    
+    # Save the file
+    File.open("./public/uploads/#{filename}", "wb") do |f|
+      f.write(file.read)
+    end
+    
+    "File uploaded successfully!"
+  else
+    "No file selected"
+  end
+end
+```
+
+## How do you deploy a Sinatra application?
+A Sinatra application can be deployed using various platforms like Heroku:
+
+1. Add necessary gems to Gemfile:
+```ruby
+source "https://rubygems.org"
+
+ruby "3.1.2"
+gem "sinatra"
+gem "puma"
+```
+
+2. Create a config.ru file:
+```ruby
+require './app'
+run Sinatra::Application
+```
+
+3. Create a Procfile for Heroku:
+```
+web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+```
+
+4. Deploy to Heroku:
+```bash
+heroku create
+git push heroku main
+```
+
+## What is middleware and how is it used in Rack/Sinatra applications?
+Middleware is software that sits between the web server and the application, processing requests and responses. In Rack, middleware is implemented as classes with a `call` method that takes an environment hash and returns a response array.
+
+```ruby
+class SimpleLogger
+  def initialize(app)
+    @app = app
+  end
+  
+  def call(env)
+    puts "Request received: #{env['REQUEST_METHOD']} #{env['PATH_INFO']}"
+    status, headers, body = @app.call(env)
+    puts "Response sent: #{status}"
+    [status, headers, body]
+  end
+end
+
+# In config.ru
+use SimpleLogger
+run MyApp
+```
+
+## How do you handle errors in Sinatra?
+```ruby
+# Define error handlers for specific status codes
+not_found do
+  status 404
+  erb :not_found
+end
+
+error 500 do
+  status 500
+  erb :internal_error
+end
+
+# Handle custom exceptions
+error MyCustomError do
+  status 400
+  erb :custom_error
+end
+
+# General error handling
+error do
+  status 500
+  "Something went wrong: #{env['sinatra.error'].message}"
+end
+```
+
+## How do you structure a larger Sinatra application?
+For larger applications, it's better to use the modular style with a structured directory layout:
+
+```
+my_app/
+├── config.ru
+├── Gemfile
+├── Gemfile.lock
+├── app.rb
+├── models/
+│   ├── user.rb
+│   └── post.rb
+├── controllers/
+│   ├── application_controller.rb
+│   ├── users_controller.rb
+│   └── posts_controller.rb
+├── views/
+│   ├── layout.erb
+│   ├── index.erb
+│   ├── users/
+│   │   ├── index.erb
+│   │   └── show.erb
+│   └── posts/
+│       ├── index.erb
+│       └── show.erb
+├── public/
+│   ├── stylesheets/
+│   ├── images/
+│   └── javascripts/
+└── helpers/
+    └── application_helper.rb
+```
+
+Modular application example:
+```ruby
+# app.rb
+require 'sinatra/base'
+require_relative 'controllers/application_controller'
+require_relative 'controllers/users_controller'
+require_relative 'controllers/posts_controller'
+
+# config.ru
+require './app'
+map('/users') { run UsersController }
+map('/posts') { run PostsController }
+map('/') { run ApplicationController }
+```

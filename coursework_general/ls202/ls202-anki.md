@@ -1,0 +1,211 @@
+## What is HTML?
+HTML (HyperText Markup Language) is the standard markup language for creating web pages. It provides the structure and content of a web page using various elements and tags.
+
+## What is CSS?
+CSS (Cascading Style Sheets) describes the appearance or presentation of HTML elements. It handles styling aspects like colors, spacing, fonts, and layout.
+
+## What is semantic HTML?
+Semantic HTML is the practice of using HTML elements that clearly describe their meaning and purpose in the document structure, both for browsers and developers. Examples include `<header>`, `<nav>`, `<section>`, `<article>`, and `<footer>`.
+
+## What is the required structure of an HTML document?
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+  </head>
+  <body>
+    <!-- Content goes here -->
+  </body>
+</html>
+```
+
+## What's the difference between a block element and an inline element?
+Block elements start on a new line and take up the full width available (e.g., `<div>`, `<p>`, `<h1>`). Inline elements only take up as much width as necessary and do not start on a new line (e.g., `<span>`, `<a>`, `<img>`).
+
+## What are the three ways to include CSS in an HTML document?
+1. Inline CSS: Using the style attribute directly in HTML elements
+2. Internal CSS: Using the `<style>` tag in the document head
+3. External CSS: Linking to an external CSS file using the `<link>` tag
+
+## What are the three basic CSS selectors?
+1. Type selectors: Target elements by their HTML tag (e.g., `p { }`)
+2. Class selectors: Target elements by their class attribute (e.g., `.example { }`)
+3. ID selectors: Target a single element by its ID attribute (e.g., `#header { }`)
+
+## What is the CSS box model?
+The CSS box model describes the rectangular boxes that are generated for elements in the document. It consists of:
+- Content: The actual content of the box
+- Padding: Space between the content and the border
+- Border: Line that surrounds the padding
+- Margin: Space outside the border
+
+## What is the difference between content-box and border-box?
+- `content-box` (default): Width and height properties only include the content, excluding padding and border
+- `border-box`: Width and height properties include content, padding, and border
+
+## What are the different values for the display property?
+- `block`: Takes full width, starts on new line
+- `inline`: Takes only needed width, flows with text
+- `inline-block`: Combines features of both block and inline
+- `none`: Removes element from document flow
+- `flex`: Creates a flex container
+- `grid`: Creates a grid container
+
+## What are the different CSS units?
+- Absolute units: px (pixels)
+- Relative units: em (relative to parent element's font size), rem (relative to root element's font size), % (percentage of parent element's size)
+- Viewport units: vw (viewport width), vh (viewport height)
+
+## What is a CSS reset?
+A CSS reset is a set of CSS rules that resets the styling of HTML elements to a consistent baseline across different browsers, eliminating browser inconsistencies in default styling.
+
+## What's the difference between classes, IDs, and names?
+- Classes: Reusable identifiers for multiple elements, selected with `.classname` in CSS
+- IDs: Unique identifiers for a single element, selected with `#idname` in CSS
+- Names: Used primarily for form elements to identify data for server processing, not selectable in CSS
+
+## How do you create a horizontal navigation menu from a list?
+1. Create an unordered list with links
+2. Remove the default list styling
+3. Set the list items to `display: inline-block` or use flexbox
+4. Apply appropriate styling to the links
+
+```html
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+```
+
+```css
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+```
+
+## What is the difference between JPG, PNG, and GIF image formats?
+- JPG/JPEG: Best for photographs and complex images with many colors and gradients; uses lossy compression; does not support transparency
+- PNG: Supports transparency; uses lossless compression; better for images with text, lines, and sharp edges
+- GIF: Limited to 256 colors; supports animation and binary transparency; good for simple animations and icons
+
+## How do you include an image in an HTML document?
+```html
+<img src="path/to/image.jpg" alt="Description of the image">
+```
+The `src` attribute specifies the path to the image file, and the `alt` attribute provides alternative text for screen readers and when the image fails to load.
+
+## What are HTML tables and when should you use them?
+HTML tables are used to represent tabular data in rows and columns. They should only be used for actual tabular data, not for layout purposes. Tables consist of elements like `<table>`, `<tr>` (table row), `<th>` (table header), and `<td>` (table data).
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## What are HTML forms and how do you create them?
+HTML forms are used to collect user input. They are created using the `<form>` element along with various form controls like `<input>`, `<textarea>`, `<select>`, and `<button>`.
+
+```html
+<form action="/submit" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  
+  <button type="submit">Submit</button>
+</form>
+```
+
+## What is the difference between checkboxes and radio buttons?
+- Checkboxes (`<input type="checkbox">`) allow multiple selections and are independent of each other
+- Radio buttons (`<input type="radio">`) only allow one selection within a group (those with the same `name` attribute)
+
+## What is the purpose of the `<label>` element in forms?
+The `<label>` element associates text with a form control, providing context for the user and increasing the clickable area for the control. It improves accessibility and usability.
+
+## What are media queries and how do they enable responsive design?
+Media queries are CSS techniques that apply styles based on device characteristics (such as screen width). They allow websites to adapt their layout and styling for different screen sizes and devices.
+
+```css
+@media screen and (max-width: 768px) {
+  /* CSS rules for screens up to 768px wide */
+  .container {
+    width: 100%;
+  }
+}
+```
+
+## What is a CSS selector's specificity and how is it calculated?
+Specificity determines which CSS rule applies when multiple rules target the same element. It's calculated based on:
+- Inline styles: Highest specificity (1,0,0,0)
+- IDs: High specificity (0,1,0,0 per ID)
+- Classes, attributes, and pseudo-classes: Medium specificity (0,0,1,0 per class)
+- Elements and pseudo-elements: Low specificity (0,0,0,1 per element)
+
+## What is the purpose of the alt attribute for images?
+The `alt` attribute provides alternative text for an image if it cannot be displayed. It's essential for:
+- Accessibility: Screen readers use it to describe images to visually impaired users
+- SEO: Search engines use it to understand image content
+- Fallback: It displays when images fail to load
+
+## What is the CSS cascade and how does it work?
+The cascade is the algorithm that determines which CSS rules apply when multiple rules match the same element. It follows these principles in order:
+1. Importance: `!important` rules override normal rules
+2. Specificity: More specific selectors override less specific ones
+3. Source order: Later rules override earlier ones with the same specificity
+
+## How do you center an element horizontally in CSS?
+For block elements:
+```css
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  /* or shorthand */
+  margin: 0 auto;
+}
+```
+
+For text within an element:
+```css
+.center-text {
+  text-align: center;
+}
+```
+
+## What is the purpose of the viewport meta tag?
+The viewport meta tag controls how a webpage is displayed on mobile devices, ensuring proper scaling and responsiveness.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+This sets the viewport width to the device width and initial zoom level to 1.0, preventing automatic zooming and scaling issues on mobile devices.
