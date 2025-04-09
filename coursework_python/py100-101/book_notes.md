@@ -9,7 +9,8 @@
 - Named after the British comedy group "Monty Python's Flying Circus"
 - First public release (v0.90) in 1991, first production version (1.0) in 1994
 - Python 2 support ended in 2020; all developers should now use Python 3
-- Python's future looks stable with gradual improvements rather than major version changes
+- Python's future looks stable with gradual improvements rather than major 
+  version changes
 
 #### Abstraction in Programming
 - **Abstraction**: Users don't need to know what's happening "under the hood"
@@ -41,7 +42,8 @@
 #### Python Documentation
 - Documentation available at python.org/doc/
 - Key sections:
-  - Language Reference (especially Expressions, Simple Statements, Compound Statements)
+  - Language Reference (especially Expressions, Simple Statements, Compound 
+    Statements)
   - Library Reference (Built-in Types, Functions, Constants)
   - Glossary for terminology
   - Complete Table of Contents
