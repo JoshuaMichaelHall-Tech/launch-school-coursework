@@ -117,13 +117,16 @@ When 3 or more parallel lines are cut by two transversals, the lengths of the
 corresponding segments of the transversal are proportional.
 
 ## X to power of -n 
-If n is any real number and X is any real number that is not zero, X to the -n 
-power = 1 over X to the n power. We can write an exponential expression in 
-reciprocal form if we change the sign of the exponent.
+If n is any real number and X is any real number that is not zero:
+X<sup>-n</sup> = <sup>1</sup>&frasl;<sub>X<sup>n</sup></sub>
+We can write an exponential expression in reciprocal form if we change the 
+sign of the exponent.
 
 ## Product Theorem for Exponents
-If M and N and X are real numbers and X is not zero, X to the power of M times 
-X to the power of N = X to the power of MN 
+If M, N, and X are real numbers and X is not zero, then:
+X<sup>M</sup> ⋅ X<sup>N</sup> = X<sup>M+N</sup>
+(Therefore, X to the power of M times X to the power of N is equal to X to the 
+power of M plus N, not M times N.)
 
 ## Power Theorem for Exponents 
 
