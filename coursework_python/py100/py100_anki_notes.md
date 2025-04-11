@@ -1,4 +1,4 @@
-## What are primitive types?
+## What are primitives?
 Primitive types are the most fundamental data types in a language. Almost all 
 data in a language is built up from these primitive types.
 
@@ -12,19 +12,21 @@ Includes: strings, floats, booleans, dictionaries, lists, tuples, and sets.
 
 ## How do we create objects without literal forms?
 We use the type constructor.
-range(10)         # Range of numbers: 0-9
-range(1, 11)      # Range of numbers: 1-10
-set()             # Empty set
-frozenset([1, 2]) # Frozen set of values: 1 and 2
+`range(10)`         # Range of numbers: 0-9
+`range(1, 11)`      # Range of numbers: 1-10
+`set()`             # Empty set
+`frozenset([1, 2])` # Frozen set of values: 1 and 2
+Note that you cannot use empty curly braces {} to create an empty set, as this 
+syntax creates an empty dictionary instead.
 
 ## What are variables?
 Names used to identify values, i.e. identifiers.
 
 ## How do we assign values to variables?
 We initialize variables to create them:
-pi = 3.14 # Assignment
+`pi = 3.14 # Assignment`
 We can then reassign variables:
-pi = 3.141592653589793 # Reassignment
+`pi = 3.141592653589793 # Reassignment`
 
 ## What are booleans?
 Values representing binary states such as true or false, on or off, yes or no,
@@ -45,8 +47,8 @@ With single, double, or triple quotes:
 'single', ''double'', '''triple''', """triple double"""
 
 ## How do we escape quotes within a string?
-- We can use a \ just prior to the character to escape.
-- We can use a different set of start/end quotes: 'start "problem end'.
+- We can use a `\` just prior to the character to escape.
+- We can use a different set of start/end quotes: 'start "problem" end'.
 - We can use a raw literal.
 
 ## How can we access an individual character in a string?
@@ -54,33 +56,32 @@ Using [] indexing syntax. The value between the brackets must be an integer
 between 0 and the length of the string minus 1:
 >>> my_str = 'abc'
 >>> my_str[0]
-a
 
 ## What are Raw Strings?
-String literals with an r prefix. They don't recognize escapes (\) so they can 
+String literals with an r prefix. They don't recognize escapes `\` so they can 
 be used freely.
 print(r"C:\Users\File")  # raw string literal
 
 ## What are f-Strings?
 Formatted string literals. They enable string interpolation. Created by prepend-
 ing 'f' to the string:
->>> f'5 plus 5 equals {5 + 5}.'
-'5 plus 5 equals 10.'
-Anything in the {} will be evaluated and the result passed to the string.
-Doubling {{}} causes the inner {} to be used as literal characters.
+`>>> f'5 plus 5 equals {5 + 5}.'`
+`'5 plus 5 equals 10.'`
+Anything in the `{}` will be evaluated and the result passed to the string.
+Doubling `{{}}` causes the inner `{}` to be used as literal characters.
 
 ## How can we print a number with '_' or ',' separators?
 Using an f-String:
-print(f'{123456789:_}')       # 123_456_789
-print(f'{123456789:,}')       # 123,456,789 
-print(f'{123456.7890123:_}')  # 123_456.7890123
-print(f'{123456.7890123:,}')  # 123,456.7890123
+`print(f'{123456789:_}')       # 123_456_789`
+`print(f'{123456789:,}')       # 123,456,789`
+`print(f'{123456.7890123:_}')  # 123_456.7890123`
+`print(f'{123456.7890123:,}')  # 123,456.7890123`
 
 ## What are functions?
 Chunks of reusable code. They have a data type.
 
 ## What are sequences?
-Ordered collection of objects. Includes arrays, lists, tuples, and ranges.
+Ordered collection of objects. Includes lists, tuples, and ranges.
 
 ## What are lists and tuples?
 Ordered lists. Lists use [], tuples use (). Access elements in either using [] 
@@ -152,17 +153,17 @@ my_dict = {
 
 ## What is multi-line format?
 Code that spans across multiple lines for better readability or to handle long 
-content. Multi-line strings using triple quotes (''' or """)
-Breaking long statements using backslashes \ or enclosing in parentheses ()
+content. Multi-line strings may use triple quotes (''' or """).
+Breaking long statements using backslashes `\` or enclosing in parentheses `()`.
 
 ## What are the requirements for keys in dictionaries?
 They must be immutable and hashable.
 
 ## What are sets?
 Unordered collections of unique objects (sometimes called members of the sets).
-The literal syntax is a comma-separated list of objects between {}. Empty sets 
+The literal syntax is a comma-separated list of objects between `{}`. Empty sets 
 must be created with the set constructor to distinguish from an empty dictionary.
-s1 = set()      # Empty sets
+`s1 = set()      # Empty sets`
 
 ## What are the requirements for set members?
 They must be immutable and hashable.
@@ -171,7 +172,7 @@ They must be immutable and hashable.
 Ordinary sets (class set) and frozen sets (class frozenset).
 
 ## How can we find the length of almost any collection object or text sequence?
-len()
+`len()`
 
 ## What are the three main kinds of types?
 - built-in: part of Python
@@ -179,19 +180,19 @@ len()
 - non-standard: additional custom modules
 
 ## What are the following 3 operations: //, %, ** ?
-- // integer division: returns largest whole number less than or equal to float 
-- % modulo: when both numbers are positive, returns remainder
-- ** exponentiation: raise left number to the power of right number
+- `//` integer division: returns largest whole number less than or equal to float 
+- `%` modulo: when both numbers are positive, returns remainder
+- `**` exponentiation: raise left number to the power of right number
 
 ## What are the two equality comparators?
-- == (equal?)
-- != (not equal?)
+- `==` (equal?)
+- `!=` (not equal?)
 
 ## What are the ordered comparitors?
-- < (less than)
-- > (greater than)
-- <= (less than or equal to)
-- >= (greater than or equal to)
+- `<` (less than)
+- `>` (greater than)
+- `<=` (less than or equal to)
+- `>=` (greater than or equal to)
 
 ## What does it mean that strings are compared lexicographically?
 They are compared character-by-character from left to right.
@@ -200,7 +201,7 @@ They are compared character-by-character from left to right.
 All uppercase letters are lower than any lowercare letters.
 
 ## What is string contatenation?
-Looks like numeric addition and multiplication, using + and * to join strings.
+Looks like numeric addition and multiplication, using `+` and `*` to join strings.
 ```
 'foo' + 'bar'     # 'foobar'
 'abc' * 3         # 'abcabcabc'
@@ -211,7 +212,7 @@ Looks like numeric addition and multiplication, using + and * to join strings.
 We cannot add the two strings '1' and '2' mathematically. We need to use type 
 coercion. 
 ```
-print(int('1') + int('2')
+print(int('1') + int('2')    # 3
 ```
 Numbers can also be converted to strings:
 ```
@@ -222,11 +223,11 @@ These are examples of explicit conversion.
 ## What are examples of explicit and implicit conversion?
 Explicit conversion:
 ```
-print(str(3))    #3 
+print(str(3))    # 3 
 ```
 Implicit conversion:
 ```
-print(3)         #3 
+print(3)         # 3 
 ```
 Implicit conversion is automatic when mixing different types of numbers in an 
 expression.
@@ -237,7 +238,7 @@ Truthiness tests use implicit conversion.
 print(type(1))   # <class 'int'>
 ```
 
-## How can we just get the class name?
+## How can we just get the class name of a given object?
 ```
 print(type('abc').__name__)   # str
 ```
@@ -292,7 +293,7 @@ A label for information stored in memory. AKA identifiers.
 The def statement creates a function. 
 
 ## How do we call a function?
-By appending () to the function name.
+By appending `()` to the function name.
 
 ## How are different types of variables named in Python?
 - CONSTANTS: SCREAMING_SNAKE_CASE
@@ -335,15 +336,15 @@ print(bar)          # prints {1, 3, 5}
 - Mutation changes the object itself.
 
 ## How to enter multiple statements on the same line?
-Use an ; between the statements. This should generally only be done in the REPL.
+Use an `;` between the statements. This should generally only be done in the REPL.
 
 ## What is a REPL?
-REPL stands for Read-Eval-Print Loop. It's an interactive programming 
+REPL stands for Read-Eval-Print-Loop. It's an interactive programming 
 environment where Python reads your input, evaluates it, prints the result, 
 and loops back for more input. Great for testing code snippets quickly.
 
 ## How can we get input from the terminal?
-input()
+`input()`
 
 ## What are proceedures?
 Blocks of code that run as separate units. In Python, these are called functions.
@@ -403,5 +404,19 @@ Scope determines where an identifier can be used.
 ## What is function scope?
 In Python, identifiers have function scope. Anything initialized within a function
 is only available within that function and any nested functions.
+
+## How to start and exit Python REPL?
+- Start: `python` or `python3`
+- Exit: `exit()`, `quit()`, or Control-D
+
+## How to stop a running Python program?
+Control-C
+
+## Ways to continue lines?
+- String literals in parentheses
+- Triple-quoted strings
+- Multi-value literals with line breaks
+- Parentheses for expressions
+- Backshash (`\`) at line end
 
 
