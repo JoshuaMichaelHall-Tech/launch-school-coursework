@@ -7,8 +7,9 @@ Non-primitive types such as sequences, mappings, and sets that collect multiple
 items in a single object.
 
 ## What is a literal?
-Any syntactic notation that lets you directly represent an object in source code.
-Includes: strings, floats, booleans, dictionaries, lists, tuples, and sets.
+Any syntactic notation that lets you directly represent an object in source 
+code. Includes: strings, floats, booleans, dictionaries, lists, tuples, and 
+sets.
 
 ## How do we create objects without literal forms?
 We use the type constructor.
@@ -44,27 +45,29 @@ contains characters or bytes.
 
 ## How are string literals written?
 With single, double, or triple quotes:
-'single', ''double'', '''triple''', """triple double"""
+`'single'`, `''double''`, `'''triple'''`, `"""triple double"""`
 
 ## How do we escape quotes within a string?
 - We can use a `\` just prior to the character to escape.
-- We can use a different set of start/end quotes: 'start "problem" end'.
+- We can use a different set of start/end quotes: `'start "problem" end'`.
 - We can use a raw literal.
 
 ## How can we access an individual character in a string?
 Using [] indexing syntax. The value between the brackets must be an integer 
 between 0 and the length of the string minus 1:
+```
 >>> my_str = 'abc'
 >>> my_str[0]
+```
 
 ## What are Raw Strings?
 String literals with an r prefix. They don't recognize escapes `\` so they can 
 be used freely.
-print(r"C:\Users\File")  # raw string literal
+`print(r"C:\Users\File")  # raw string literal`
 
 ## What are f-Strings?
-Formatted string literals. They enable string interpolation. Created by prepend-
-ing 'f' to the string:
+Formatted string literals. They enable string interpolation. Created by 
+prepending 'f' to the string:
 `>>> f'5 plus 5 equals {5 + 5}.'`
 `'5 plus 5 equals 10.'`
 Anything in the `{}` will be evaluated and the result passed to the string.
@@ -133,7 +136,7 @@ the values. One example is the dictionary class.
 {'dog': 'barks', 'cat': 'meows', 'pig': 'oinks'}
 ```
 
-## What does it look like to use multi-line formatting when creating a dictionary?
+## How to use multi-line formatting when creating a dictionary?
 ```
 my_dict = {
     'title': "Monty Python's Flying Circus",
@@ -161,8 +164,9 @@ They must be immutable and hashable.
 
 ## What are sets?
 Unordered collections of unique objects (sometimes called members of the sets).
-The literal syntax is a comma-separated list of objects between `{}`. Empty sets 
-must be created with the set constructor to distinguish from an empty dictionary.
+The literal syntax is a comma-separated list of objects between `{}`. Empty 
+sets must be created with the set constructor to distinguish from an empty 
+dictionary.
 `s1 = set()      # Empty sets`
 
 ## What are the requirements for set members?
@@ -308,7 +312,8 @@ The expression is first evaluated and the return value is assigned to the
 variable.
 
 ## What is augmented assignment?
-A shorthand notation for simultaneously operating on a value and reassigning it:
+A shorthand notation for simultaneously operating on a value and reassigning 
+it:
 ```
 foo = 42            # foo is 42
 foo -= 2            # foo is now 40
@@ -336,7 +341,8 @@ print(bar)          # prints {1, 3, 5}
 - Mutation changes the object itself.
 
 ## How to enter multiple statements on the same line?
-Use an `;` between the statements. This should generally only be done in the REPL.
+Use an `;` between the statements. This should generally only be done in the 
+REPL.
 
 ## What is a REPL?
 REPL stands for Read-Eval-Print-Loop. It's an interactive programming 
@@ -345,9 +351,14 @@ and loops back for more input. Great for testing code snippets quickly.
 
 ## How can we get input from the terminal?
 `input()`
+```
+user_input = input("Enter something: ")
+print(f"You entered: {user_input}")
+```
 
 ## What are proceedures?
-Blocks of code that run as separate units. In Python, these are called functions.
+Blocks of code that run as separate units. In Python, these are called 
+functions.
 
 ## What are common terms for using a function?
 Calling, invoking, executing, or running it.
@@ -355,36 +366,37 @@ Calling, invoking, executing, or running it.
 ## What do we call the lines of code used to create a function?
 The function definition or function declaration.
 
-## What do min and max do?
+## What do `min` and `max` do?
 Return the minimum and maximum values from a collection, respectively.
 
-## What do ord and chr do?
-ord returns representing the Unicode code point of the character. chr is the 
-inverse and converts an integer to its corresponding Unicode character.
+## What do `ord` and `chr` do?
+`ord` returns an integer representing the Unicode code point of the character.
+`chr` is the inverse and converts an integer to its corresponding Unicode 
+character.
 
 ## What objects are falsy?
-- False, None
+- `False`, `None`
 - all numeric 0 values (integers, floats, complex)
-- empty strings: ''
-- empty collections: [], (), {}, set(), frozenset(), and range(0)
+- empty strings: `''`
+- empty collections: `[]`, `()`, `{}`, `set()`, `frozenset()`, and `range(0)`.
 - Custom data types can also define additional falsy value(s).
 
-## What do any and all do?
-any returns true if there is any matching element in a collection. all returns 
+## What do `any` and `all` do?
+`any` returns true if there is any matching element in a collection. `all` returns 
 true if every element in a collection matches.
 
 ## What are some functions only for the REPL?
-id, dir, and help
+`id`, `dir`, and `help`
 
 ## What are id, dir, and help used for?
-- id: returns an object id integer
-- dir: returns a list of all identifiers in the current local scope. When used
-with an argument, returns a list of the objects attributes.
-- help: use help() to get information.
+- `id`: returns an object id integer
+- `dir`: returns a list of all identifiers in the current local scope. When used
+with an argument, returns a list of the objects' attributes.
+- `help`: use `help()` to get information.
 
 ## What is dunder?
 AKA magic methods and magic variables. Names which begin and end with double 
-underscores (double-under => dunder).
+underscores (double-under => dunder). EG `__name__`.
 
 ## How do we pretty print for readability?
 ```
@@ -393,17 +405,17 @@ pp()
 ```
 
 ## What is a docstring?
-a triple quoted string used to create a comment.
+A triple quoted string used to create a comment.
 
-## Why do Python programmers often add a docstring at the beginning of functions?
+## Why Python programmers often add a docstring at the beginning of functions?
 Python can access these docstrings from its help function.
 
 ## What is scope?
 Scope determines where an identifier can be used.
 
 ## What is function scope?
-In Python, identifiers have function scope. Anything initialized within a function
-is only available within that function and any nested functions.
+In Python, identifiers have function scope. Anything initialized within a 
+function is only available within that function and any nested functions.
 
 ## How to start and exit Python REPL?
 - Start: `python` or `python3`
@@ -418,5 +430,466 @@ Control-C
 - Multi-value literals with line breaks
 - Parentheses for expressions
 - Backshash (`\`) at line end
+
+## What are conditional statements?
+Statements that control the path data takes through a program based on whether 
+a condition evaluates to true or false.
+
+## What are the basic conditional statement structures in Python?
+- `if`: Executes a block of code if a condition is true
+- `elif`: Checks another condition if the previous conditions were false
+- `else`: Executes a block of code if all previous conditions were false
+
+## How do we organize code blocks in conditional statements?
+All statements in a block must be indented consistently using spaces. 
+Indentation defines the block structure in Python.
+Python uses 4 spaces for indentation.
+
+## What does the equality operator (`==`) do?
+Returns `True` when operands have equal values:
+```python
+print(5 == 5)                 # True
+print('abc' == 'abc')         # True
+print(5 == '5')               # False
+```
+
+## How can we perform case-insensitive string comparison?
+By converting both strings to the same case before comparison:
+```python
+print('abc'.lower() == 'aBc'.lower())  # True
+print('abc'.upper() == 'aBc'.upper())  # True
+print('abc'.casefold() == 'aBc'.casefold())  # True
+```
+
+## What is the difference between `casefold()` and `lower()`?
+`casefold()` is more aggressive and handles international text better than 
+`lower()`, making it preferred for case-insensitive comparisons across 
+languages.
+
+## What does the inequality operator (`!=`) do?
+Returns `True` when operands are not equal:
+```python
+print(5 != 5)             # False
+print(5 != 4)             # True
+```
+
+## How do the less than (`<`) and less than or equal to (`<=`) operators work?
+- `<` returns `True` when left operand is less than right
+- `<=` returns `True` when left operand is less than or equal to right
+
+## How do the greater than (`>`) and greater than or equal to (`>=`) operators work?
+- `>` returns `True` when left operand is greater than right
+- `>=` returns `True` when left operand is greater than or equal to right
+
+## How does string comparison work with comparison operators?
+Strings are compared character-by-character:
+```python
+print('42' < '402')       # False (because '4' == '4', but '2' > '0')
+print('42' < '420')       # True
+```
+
+## What does the `not` operator do?
+Negates a Boolean value:
+```python
+print(not True)           # False
+print(not False)          # True
+print(not(4 == 4))        # False
+```
+
+## What do the `and` and `or` operators do?
+- `and`: Returns `True` if both operands are true
+- `or`: Returns `True` if at least one operand is true
+
+## What is short-circuit evaluation?
+A performance optimization where the second part of a logical expression is 
+only evaluated if necessary:
+- In `A and B`, if `A` is `False`, `B` is not evaluated (result is always `False`)
+- In `A or B`, if `A` is `True`, `B` is not evaluated (result is always `True`)
+
+## What are the falsy values in Python?
+- `False`, `None`
+- Zero values: `0`, `0.0`
+- Empty collections: `''`, `[]`, `()`, `{}`, `set()`, `range(0)`
+- Everything else is truthy
+
+## What do logical operators actually return in Python?
+They return the last evaluated value, not just `True`/`False`:
+```python
+print(3 and 'foo')   # 'foo'
+print(0 and 'foo')   # 0
+print(3 or 'foo')    # 3
+print(0 or 'foo')    # 'foo'
+```
+
+## What is the order of precedence for logical operators?
+From highest to lowest:
+- Comparison operators (`==`, `!=`, `<=`, `<`, `>`, `>=`)
+- `not`
+- `and`
+- `or`
+
+## What is the `match/case` statement?
+Introduced in Python 3.10, it compares a single value against multiple 
+patterns:
+```python
+match value:
+    case 5:
+        print('value is 5')
+    case 6:
+        print('value is 6')
+    case _:  # default case
+        print('value is neither 5 nor 6')
+```
+
+## How can we match multiple values in a single case?
+Using the pipe (`|`) operator:
+```python
+match value:
+    case 1 | 2 | 3 | 4:
+        print('value is < 5')
+    case 5 | 6:
+        print('value is 5 or 6')
+    case _:
+        print('value is something else')
+```
+
+## What is a ternary expression?
+A concise way to choose between two values based on a condition:
+```python
+result = value1 if condition else value2
+```
+
+## How do functions help improve code?
+- Reduce repetitive code
+- Enable code reuse
+- Improve readability and maintenance
+- Organize code into logical blocks
+
+## What are the terms for using a function?
+Calling, invoking, executing, or running it.
+
+## How are multiple arguments separated in a function call?
+With commas:
+```python
+print('hello', 'good-bye', 'farewell')
+```
+
+## How can we format long argument lists?
+By spreading them over multiple lines:
+```python
+print(
+    'hello',
+    'good-bye',
+    'farewell',
+    'adios',
+)
+```
+
+## What are some examples of built-in functions in Python?
+- Type conversion: `float`, `int`
+- Constructors: `str`, `list`, `tuple`, `set`, `frozenset`
+- I/O functions: `input`, `print`
+- Information functions: `type`, `len`
+
+## What are predicates?
+Functions that return Boolean values:
+```python
+def is_digit(char):
+    if char >= '0' and char <= '9':
+        return True
+    return False
+```
+
+## What is the default return value of a function without an explicit return?
+`None` (implicit return)
+
+## How do we provide default values for parameters?
+Using the assignment operator in the parameter list:
+```python
+def say(text='hello'):
+    print(text + '!')
+```
+
+## What's the rule for parameter defaults in functions?
+After a default parameter, all subsequent parameters must have defaults.
+
+## What's the difference between functions and methods?
+- Functions are invoked as: `function_name(obj, ...)`
+- Methods are invoked as: `obj.method_name(...)`
+- Methods belong to a class and require an object of that class
+
+## What does it mean to mutate the caller?
+Some methods change the object used to call them:
+```python
+odd_numbers = [1, 3, 5, 7, 9]
+odd_numbers.pop()      # Removes and returns 9
+print(odd_numbers)     # [1, 3, 5, 7]
+```
+
+## What's a better practice than mutating arguments?
+Return a new object instead:
+```python
+def add_new_number(my_list):
+    return my_list + [9]  # Creates a new list
+```
+
+## What is variable shadowing?
+When a local variable has the same name as a variable in an outer scope, hiding 
+the outer variable:
+```python
+greeting = 'Salutations'
+
+def well_howdy(who):
+    greeting = 'Howdy'     # Local variable shadows outer greeting
+    print(f'{greeting}, {who}')
+```
+
+## In what order does Python look for identifiers?
+- Local namespace (local scope)
+- Enclosing namespaces (outer scopes)
+- Global namespace (global scope)
+- Built-in namespace
+
+## What is the difference between parameters and arguments?
+- Parameters: Placeholders in function definition
+- Arguments: Values passed when calling the function
+
+## What is a collection?
+A data structure that can contain multiple elements.
+
+## What are the main collection types in Python?
+- Sequences: ranges, tuples, lists, strings
+- Mappings: dictionaries
+- Sets: sets, frozen sets
+
+## What's the difference between mutable and immutable collections?
+- Mutable collections can be changed (lists, dictionaries, sets)
+- Immutable collections cannot be changed (ranges, tuples, frozen sets, 
+  strings)
+
+## What defines a sequence collection?
+- Ordered collections of objects
+- Can be indexed by whole numbers (starting at 0)
+- Examples: lists, tuples, ranges, strings
+
+## What's the difference between homogeneous and heterogeneous collections?
+- Homogeneous: All elements are of the same type (e.g., ranges)
+- Heterogeneous: Can contain different types of objects (e.g., lists, tuples)
+
+## How do strings differ from standard sequences?
+- Homogenous (all characters)
+- Characters aren't distinct objects until referenced
+- Characters are strings of length 1
+- Not a true collection (characters aren't objects)
+
+## What defines a set collection?
+- Unordered collections of unique objects
+- Cannot be indexed
+- No defined order for objects
+- No duplicate members allowed
+
+## What are the two types of sets?
+- Sets (`set`): Mutable
+- Frozen sets (`frozenset`): Immutable
+
+## What defines a mapping collection?
+- Unordered collections of key/value pairs
+- Accessed by keys, not indices
+- Keys must be unique and hashable
+- Values can be any object
+
+## What are the three forms of the range constructor?
+- `range(start, stop, step)`: Generates sequence from `start` to `stop - 1` 
+  with increment of `step`
+- `range(start, stop)`: Same as `range(start, stop, 1)`
+- `range(stop)`: Same as `range(0, stop, 1)`
+
+## What is a lazy sequence?
+A sequence that doesn't compute all its elements at once, but creates them only 
+when needed. Ranges are lazy sequences.
+
+## How can we create nested collections?
+By including collections inside other collections:
+```python
+nested_list = [
+    {'foo': 42, 'bar': [1, 2, 3]},
+    {'Kim', ('Leslie', 'Les')},
+    (4, 5, (1, 2, 3)),
+    ['a', 'b', 'cde'],
+]
+```
+
+## What are the limitations of nesting mutable collections?
+- Can't nest mutable collections inside sets:
+```python
+# Error: TypeError: unhashable type: 'list'
+my_set = {1, 2, 3, [4, 5]}
+```
+
+## How do we access elements in nested collections?
+Using multiple indices:
+```python
+nested_seq = [[1, 2], [3, 4]]
+print(nested_seq[1][0])  # 3
+```
+
+## When are two collections considered equal?
+Equal collections must meet all criteria:
+- Same type (list, tuple, set, etc.)
+- Same number of elements
+- For sequences, corresponding elements must be equal
+- For sets, same members (order doesn't matter)
+- For mappings, same key/value pairs (order doesn't matter)
+
+## What is indexing?
+The process of using a whole number to access and perhaps alter an element of 
+a sequence.
+```
+seq = ('a', 'b', 'c')
+print(seq[0])  # a (1st element)
+print(seq[1])  # b (2nd element)
+print(seq[2])  # c (3rd element)
+print(seq[3])  # IndexError: tuple index out of range 
+```
+
+## What is slicing?
+Slicing can extract or modify any number of consecutive elements in a 
+collection simultaneously.
+`seq[start:stop]`
+`seq[start:stop:step]`
+
+## Examples of slicing:
+```
+seq = 'abcdefghi'
+print(seq[3:7])       # defg
+print(seq[-6:-2])     # defg
+print(seq[2:8:2])     # ceg
+print(repr(seq[3:3])) # ''
+print(seq[:])         # abcdefghi
+print(seq[::-1])      # ihgfedcba
+```
+
+## What is key-based access?
+The process of using keys to access values in mappings.
+```
+my_dict = {
+    'a': 'abc',
+    37: 'def',
+    (5, 6, 7): 'ghi',
+    frozenset([1, 2]): 'jkl',
+}
+
+print(my_dict['a'])                # abc
+print(my_dict[37])                 # def
+print(my_dict[(5, 6, 7)])          # ghi
+print(my_dict[frozenset([1, 2])])  # jkl
+print(my_dict['nothing'])     # KeyError: 'nothing'
+```
+
+## How can we verify that a key exists in a dictionary?
+By using `dict.get`.
+```
+my_dict = {
+    'a': 'abc',
+    37: 'def',
+    (5, 6, 7): 'ghi',
+    frozenset([1, 2]): 'jkl',
+}
+
+print(my_dict.get('a'))                 # abc
+print(my_dict.get('nothing'))           # None
+print(my_dict.get('nothing', 'N/A'))    # N/A
+print(my_dict.get('nothing', 100))      # 100
+```
+
+## What are some non-mutating operations for collections?
+`in`: determines if the object to the left is in the collection on the right.
+`not in`: reverse of in.
+`min` and `max` return minimum and maximum members using `<` and `>`.
+`sum`: computes and returns sum of collections numerals.
+`index`: returns index of first matching object.
+`count`: returns number of times a value occurs.
+`zip`: merges members of multiple iterables into a single list of tuples.
+
+
+## How does zip work?
+```
+iterable1 = [1, 2, 3]
+iterable2 = ('Kim', 'Leslie', 'Bertie')
+iterable3 = [None, True, False]
+
+zipped_iterables = zip(iterable1, iterable2, iterable3)
+print(list(zipped_iterables))
+# Pretty printed for clarity
+# [
+#   (1, 'Kim', None),
+#   (2, 'Leslie', True),
+#   (3, 'Bertie', False)
+# ]
+```
+
+## What is special about iterators?
+They can only be consumed once:
+```
+result = zip(range(5, 10),    # length is 5
+             range(1, 3),     # length is 2 (shortest)
+             range(3, 7))     # length is 4
+print(list(result)) # [(5, 1, 3), (6, 2, 4)]
+print(list(result)) # []
+```
+
+## What are the three get operations for dictionaries?
+`dict.keys`
+`dict.values`
+`dict.items`
+They return their outputs in a wrapper: dict_keys(), dict_values(), or 
+dict_items() to show that these aren't regular lists. They are actually 
+dictionary view objects that are tied to the dictionary.
+
+## What are some mutating operations for mutable sequences?
+`seq.append` appends a single object to the end.
+`seq.insert` inserts an object into a mutable sequence before the element at a 
+given index.
+`seq.extend` appends the contents of an iterable sequence to the calling 
+iterable.
+`seq.remove` searches and removes first occurance of an object.
+`seq.pop` removes and returns indexed element or last element.
+`seq.clear` removes all elements.
+
+## What is the difference between `sorted` and `sort`?
+`sorted` creates a new, sorted list from a collection.
+```
+names = ('Grace', 'Clare', 'Allison', 'Trevor')
+print(sorted(names))
+# ['Allison', 'Clare', 'Grace', 'Trevor']
+```
+`sort` mutates the list and is a little faster.
+```
+print(names.sort())   # None
+print(names)
+# ['Allison', 'Clare', 'Grace', 'Trevor']
+```
+
+## How can we sort in reverse?
+By adding a reverse=True keyword argument.
+```
+names = ['Grace', 'Clare', 'Allison', 'Trevor']
+print(sorted(names, reverse=True))
+# ['Trevor', 'Grace', 'Clare', 'Allison']
+
+names.sort(reverse=True)
+print(names) # ['Trevor', 'Grace', 'Clare', 'Allison']
+```
+
+## How can we perform a case-insensitive sort?
+```
+words = ['abc', 'DEF', 'xyz', '123']
+print(sorted(words))
+# ['123', 'DEF', 'abc', 'xyz']
+
+print(sorted(words, key=str.casefold))
+# ['123', 'abc', 'DEF', 'xyz']
+```
+
 
 
