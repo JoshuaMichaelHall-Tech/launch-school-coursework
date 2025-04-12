@@ -924,4 +924,102 @@ Called on the object. `"abc".upper()`
 `+`, `==`, `in` Often calls special methods behind the scenes, 
 e.g., `a + b` → `a.__add__(b)`
 
+## How can we reverse sequences and dictionaries?
+`reversed` # Non-mutating
+`list.reverse` # Mutating
+```
+names = ('Grace', 'Clare', 'Allison', 'Trevor')
+reversed_names = reversed(names)
+print(reversed_names)
+# <reversed object at 0x102848e50>
+print(tuple(reversed(names))) # Requires extra memory
+# ('Trevor', 'Allison', 'Clare', 'Grace')
+print(names)
+# ('Grace', 'Clare', 'Allison', 'Trevor')
+
+names = list(names)
+print(names.reverse())   # None
+print(names)
+# ['Trevor', 'Allison', 'Clare', 'Grace']
+
+my_dict = {'abc': 1, 'xyz': 23, 'pqr': 0, 'jkl': 5}
+reversed_dict = reversed(my_dict)
+print(reversed_dict)
+# <dict_reversekeyiterator object at 0x100d19f80>
+
+print(list(reversed_dict))    # Requires extra memory
+# ['jkl', 'pqr', 'xyz', 'abc']
+```
+
+## What are some basic string methods?
+`str.lower` returns string all lowercased
+`str.upper` returns string all uppercase
+`str.capitalize` returns string with first letter only capitalized.
+`str.title` returns string with first letter of every word capitalized. But 
+uses some punctuation to mark new words.
+`import string; string.capwords(str) capitalizes every word following white 
+space.
+`str.swapcase` generally swaps case of every letter.
+Note that strings are immutable, so string methods are non-mutating!
+
+## What are some character classification methods?
+`str.isalpha` true if all characters are alphabetical.
+`str.isdigit` true if all characters are digits.
+`str.isalnum` true if all alphabetical or digits.
+`str.islower` true if all letters are lowercase.
+`str.isupper` true if all letters are uppercase.
+`str.isspace` true if all characters are whitespace. False if empty.
+`str.isascii` true if all characters are ascii.
+
+## How to remove leading and trailing whitespace?
+`str.strip` It can also remove other leading/trailing characters when provided
+as a string arg.
+```
+text = ' \t  abc def    \n\r'
+print(repr(text.strip('abc'))) # ' \t  abc def    \n\r'
+
+text = 'aaabaacccabxyzabccba'
+print(text.strip('a'))         # baacccabxyzabccb
+print(text.strip('ab'))        # cccabxyzabcc
+print(text.strip('ba'))        # cccabxyzabcc
+print(text.strip('abc'))       # xyz
+print(text.strip('bc'))        # aaabaacccabxyzabccba
+
+print(repr(text.strip('abcxyz'))) # ''
+```
+
+## Why use `repr` when outputting strings?
+`repr` formats strings with quotes and shows whitespace.
+
+## How can we remove either leading or trailing whitespace or characters?
+`str.lstrip` or `str.rstrip`
+
+## How can we determine whether a string leads or trails with a substring?
+`str.startswith`
+`str.endswith`
+May take index, or tuple as arguments.
+
+## How can we split and join strings?
+`str.split` defaults to split at whitespace but takes an argument to determine
+alternative.
+`str.join` same as `split` but joins.
+
+## How can we split a string into its characters?
+`list(str)` or `tuple(str)`
+`for char in str:`
+
+## How can we split a text into lines?
+`text.splitlines`
+
+## How can we join text?
+```
+words = ['You', 'were', 'lucky']
+print(''.join(words))         # Youwerelucky
+print(' '.join(words))        # You were lucky
+print(','.join(words))        # You,were,lucky
+print('\n  '.join(words))
+# You
+#   were
+#   lucky
+```
 
