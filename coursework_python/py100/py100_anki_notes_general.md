@@ -891,5 +891,37 @@ print(sorted(words, key=str.casefold))
 # ['123', 'abc', 'DEF', 'xyz']
 ```
 
+## How can we find substrings?
+`str.find` finds first occurance of argument and returns index.
+`str.rfind` is find in reverse. Both return `-1` if no match.
+You can add start and stop arguments.
+
+## What are the limitations on nested collections?
+You can't nest a mutable collection inside an immutable one.
+Exception: tuples can hold mutable collections.
+
+
+## What are some collection comparing operations?
+Equality is the most common: `==`. 
+Inequality: `!=`
+`<`, `<=`, `>`, and `>=`
+
+## What are the equality requirements for collections?
+- They have the same type: (list, tuple, set, etc.) Note that sets and frozen 
+sets are considered the same for comparison purposes.
+- They have the same number of elements.
+- For sequences, each pair of corresponding elements compares as equal.
+- For sets, each set has the same members (order doesn't matter).
+- For mappings, each key/value pair must be present and identical in both 
+mappings (order doesn't matter).
+
+## What is the difference between a function, a method, and an operator?
+- Function: A reusable block of code that performs a specific task. 
+Called independently. `len("abc")`
+- Method: A function bound to an object (usually a class instance). 
+Called on the object. `"abc".upper()`
+- Operator: A special symbol that performs an operation on values.
+`+`, `==`, `in` Often calls special methods behind the scenes, 
+e.g., `a + b` → `a.__add__(b)`
 
 
