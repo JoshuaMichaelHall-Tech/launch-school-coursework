@@ -957,7 +957,7 @@ print(list(reversed_dict))    # Requires extra memory
 `str.capitalize` returns string with first letter only capitalized.
 `str.title` returns string with first letter of every word capitalized. But 
 uses some punctuation to mark new words.
-`import string; string.capwords(str) capitalizes every word following white 
+`import string; string.capwords(str)` capitalizes every word following white 
 space.
 `str.swapcase` generally swaps case of every letter.
 Note that strings are immutable, so string methods are non-mutating!
@@ -1022,4 +1022,80 @@ print('\n  '.join(words))
 #   were
 #   lucky
 ```
+
+## List Pythons looping mechanisms:
+- `for`
+- `while`
+- `comprehensions`
+- `generators`
+- `functional loops`
+
+## While loops
+```
+counter = 1 
+while counter <= 10:
+    print(counter)
+    counter += 1 
+```
+
+## What is tuple unpacking?
+```
+# Looping over a dictionary's key/value pairs
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+for key, value in my_dict.items():
+    print(f'{key} = {value}')
+    
+a = 1
+b = 2
+c = 3
+```
+
+## What are `continue` and `break`?
+In loops:
+`continue` starts a new loop iteration.
+`break` terminates loop early.
+
+## How do we execute the main program loop at least once?
+By emulating a do/while loop.
+In Python this looks like this:
+do some work
+    if some condition is falsy
+        break 
+```
+while True:
+    # main loop code is here
+
+    answer = input('Play again? (y/n) ')
+    if answer == 'n':
+        break 
+```
+
+## What are comprehensions?
+A means of creating mutable collections from existing iterable collections.
+[ expression for element in iterable if condition ]
+```
+squares = [ number * number for number in range(5) ]
+print(squares)      # [0, 1, 4, 9, 16]
+```
+
+## What is composition?
+When a function call is used as another argument to a function call.
+
+## What is method chaining?
+Passing the return value of one method as the argument to another.
+
+## How are multi-line method chains formatted?
+```
+letters = 'abcdefghijklmnoqrstuvwxyz'
+
+# Note that the parentheses surrounding this
+# multi-line chain are required.
+consonants = (letters.replace('a', '').
+                      replace('e', '').
+                      replace('i', '').
+                      replace('o', '').
+                      replace('u', ''))
+print(consonants)    # bcdfghjklmnqrstvwxyz
+```
+
 
